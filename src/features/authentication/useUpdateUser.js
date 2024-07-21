@@ -5,12 +5,13 @@ import toast from "react-hot-toast";
 function useUpdateUser() {
   const queryClient = useQueryClient();
   const { mutate: updateUser, isPending: isUpdating } = useMutation({
-    mutationFn: ({ password, fullName, avatar }) =>
-      updateUserApi({ password, fullName, avatar }),
+    mutationFn: ({ id, password, fullName, avatar }) =>
+      updateUserApi({ id, password, fullName, avatar }),
     onSuccess: ({ user }) => {
       toast.success("User updated successfully");
       queryClient.setQueryData(["user"], user);
     },
+    onError: (err) => toast.error(err.message),
   });
   return { updateUser, isUpdating };
 }

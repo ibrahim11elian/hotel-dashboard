@@ -6,15 +6,19 @@ import Input from "../../ui/Input";
 
 import useUpdateUser from "./useUpdateUser";
 import SpinnerMini from "../../ui/SpinnerMini";
+import useUser from "./useUser";
 
 function UpdatePasswordForm() {
   const { register, handleSubmit, formState, getValues, reset } = useForm();
   const { errors } = formState;
 
+  const {
+    user: { id },
+  } = useUser();
   const { updateUser, isUpdating } = useUpdateUser();
 
   function onSubmit({ password }) {
-    updateUser({ password }, { onSuccess: () => reset() });
+    updateUser({ id, password }, { onSettled: () => reset() });
   }
 
   return (

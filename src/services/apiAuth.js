@@ -53,9 +53,13 @@ export async function getUsers(page) {
   return data;
 }
 
-export async function updateUser({ password, fullName, avatar }) {
+export async function updateUser({ id, password, fullName, avatar }) {
   let updateData;
+  if (id === "7a71b1ec-eec6-4934-9871-24805e3b085d")
+    throw new Error("You can't change the admin data");
+
   if (password) updateData = { password };
+
   if (fullName) updateData = { data: { fullName } };
 
   const { data, error } = await supabase.auth.updateUser(updateData);

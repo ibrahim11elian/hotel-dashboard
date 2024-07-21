@@ -14,6 +14,7 @@ function UpdateUserDataForm() {
   // We don't need the loading state, and can immediately use the user data, because we know that it has already been loaded at this point
   const {
     user: {
+      id,
       email,
       user_metadata: { fullName: currentFullName, avatar: currentAvatar },
     },
@@ -26,7 +27,7 @@ function UpdateUserDataForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    updateUser({ fullName, avatar });
+    updateUser({ id, fullName, avatar });
   }
 
   function handleCancel() {
