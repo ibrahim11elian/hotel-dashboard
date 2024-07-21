@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-grey-0: #fff;
+  --color-grey-50: #f9fafb;
+  --color-grey-100: #f3f4f6;
+  --color-grey-200: #e5e7eb;
+  --color-grey-300: #d1d5db;
+  --color-grey-400: #9ca3af;
+  --color-grey-500: #6b7280;
+  --color-grey-600: #4b5563;
+  --color-grey-700: #374151;
+  --color-grey-800: #1f2937;
+  --color-grey-900: #111827;
+
+  --color-blue-100: #e0f2fe;
+  --color-blue-700: #0369a1;
+  --color-blue-800: #1e40af;
+  --color-green-100: #dcfce7;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-yellow-100: #fef9c3;
+  --color-yellow-700: #a16207;
+  --color-silver-100: #e5e7eb;
+  --color-silver-700: #374151;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-700: #4338ca;
+
+  --color-red-100: #fee2e2;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+
+  --backdrop-color: rgba(255, 255, 255, 0.1);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
+}
+
+.dark {
+  --color-grey-0: #18212f;
+  --color-grey-50: #111827;
+  --color-grey-100: #1f2937;
+  --color-grey-200: #374151;
+  --color-grey-300: #4b5563;
+  --color-grey-400: #6b7280;
+  --color-grey-500: #9ca3af;
+  --color-grey-600: #d1d5db;
+  --color-grey-700: #e5e7eb;
+  --color-grey-800: #f3f4f6;
+  --color-grey-900: #f9fafb;
+
+  --color-blue-100: #075985;
+  --color-blue-700: #e0f2fe;
+  --color-blue-800: #60a5fa;
+  --color-green-100: #166534;
+  --color-green-700: #dcfce7;
+  --color-green-800: #4ade80;
+  --color-yellow-100: #854d0e;
+  --color-yellow-700: #fef9c3;
+  --color-silver-100: #374151;
+  --color-silver-700: #f3f4f6;
+  --color-indigo-100: #3730a3;
+  --color-indigo-700: #e0e7ff;
+
+  --color-red-100: #fee2e2;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+
+  --backdrop-color: rgba(0, 0, 0, 0.3);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
+
+  --image-grayscale: 10%;
+  --image-opacity: 90%;
+}
+
+@layer components {
+  .nav-link {
+    @apply flex items-center gap-3 rounded-md px-4 py-3 font-semibold text-gray-600 transition-colors duration-300 hover:bg-gray-200 hover:text-gray-800;
+  }
+
+  .nav-link svg {
+    @apply h-6 w-6 text-gray-400 transition-colors;
+  }
+
+  .nav-link.active {
+    @apply bg-gray-200 text-gray-800;
+  }
+
+  .nav-link:hover svg,
+  .nav-link.active svg {
+    @apply text-blue-600;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  .spinner {
+    @apply mx-auto my-12 aspect-square w-16 rounded-full;
+    background:
+      radial-gradient(farthest-side, #2563eb 94%, transparent) top/10px 10px
+        no-repeat,
+      conic-gradient(transparent 30%, #2563eb);
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - 10px),
+      black 0
+    );
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      #0000 calc(100% - 10px),
+      #000 0
+    );
+    animation: rotate 1.5s infinite linear;
+  }
+
+  .spinner-mini {
+    animation: rotate 1.5s infinite linear;
+  }
+}
